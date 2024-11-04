@@ -1,8 +1,5 @@
 from rest_framework import serializers
 
-class NumberSerializer(serializers.Serializer):
-    number = serializers.IntegerField()
-
 class ColorObjectSerializer(serializers.Serializer):
     path = serializers.CharField()
     average_rgb = serializers.ListField(
