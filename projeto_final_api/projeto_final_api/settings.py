@@ -49,17 +49,3 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
-
-class Color(Enum):
-    Branco = 'Branco'
-    Preto = 'Preto'
-    Azul = 'Azul'
-    Vermelho = 'Vermelho'
-    Verde = 'Verde'
-    Laranja = 'Laranja'
-    Amarelo = 'Amarelo'
-    Roxo = 'Roxo'
-    Marrom = 'Marrom'
-
-# Dicionário de cores para usar no template
-COLOR_CATEGORIES = {color.value: color.name for color in Color}

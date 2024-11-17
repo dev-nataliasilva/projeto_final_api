@@ -2,8 +2,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 import requests
-from django.conf import settings
+from .enums import Color
 from .serializers import ColorObjectSerializer
+from enum import Enum
 
 @api_view(['POST'])
 def receive_color_objects(request):
@@ -28,15 +29,16 @@ def receive_color_objects(request):
             # Chama o endpoint da IA para prever a cor
             predicted_color = get_predicted_color(average_rgb)
 
-            # Adiciona o resultado ao array de resultados
-            results.append({
-                'path': path,
-                'average_rgb': average_rgb,
-                'predicted_color': predicted_color
-            })
+            # Verifica se a cor prevista está no Enum e se está nas categorias fornecidas
+            if predicted_color in [color.name for color in Color] and predicted_color in color_categories:
+                predicted_color_enum = predicted_color  # Já é o nome da cor
+                # Adiciona o resultado ao array de resultados
+                results.append({
+                    'path': path,
+                    'average_rgb': average_rgb,
+                    'predicted_color': predicted_color_enum
+                })
 
-        # Imprime a resposta da IA no console
-        print("Resposta da IA:", results)
         return Response(results, status=status.HTTP_200_OK)
     
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
