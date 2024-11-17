@@ -1,14 +1,21 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+import requests
+from django.conf import settings
 from .serializers import ColorObjectSerializer
-import requests  # Importa o módulo requests para fazer chamadas HTTP
 
 @api_view(['POST'])
 def receive_color_objects(request):
-    serializer = ColorObjectSerializer(data=request.data, many=True)  # Supondo que você enviará um array
+    # Obtendo a lista de categorias de cores do corpo da requisição
+    color_categories = request.data.get('categories', [])  # Pegando as categorias enviadas no payload
+    
+    # Exibindo a lista de categorias de cores no console
+    print("Lista de categorias de cores recebida:", color_categories)
+
+    # Validando os objetos de cor
+    serializer = ColorObjectSerializer(data=request.data.get('colors', []), many=True)  # Usando o 'colors' enviado
     if serializer.is_valid():
-        # Aqui você pode processar os dados recebidos
         color_objects = serializer.validated_data
 
         results = []
@@ -38,8 +45,8 @@ def get_predicted_color(average_rgb):
     # URL do endpoint da sua IA (ajuste conforme necessário)
     url = 'http://localhost:7070/api/predict-color/'  # Exemplo de URL
 
-    # Ajusta o JSON enviado para o formato esperado pela IA
-    response = requests.post(url, json={'rgb': average_rgb})  # Faz a requisição POST
+    # Faz a requisição POST para o endpoint da IA
+    response = requests.post(url, json={'rgb': average_rgb})
     
     if response.status_code == 200:
         # Supondo que a resposta contenha um campo 'predicted_color'
