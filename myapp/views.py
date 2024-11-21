@@ -45,7 +45,7 @@ def receive_color_objects(request):
 
 def get_predicted_color(average_rgb):
     # URL do endpoint da sua IA (ajuste conforme necessário)
-    url = 'http://localhost:7070/api/predict-color/'  # Exemplo de URL
+    url = 'https://ondesalvei-ia-f31a49c64a2d.herokuapp.com/api/predict-color/'  # Exemplo de URL
 
     # Faz a requisição POST para o endpoint da IA
     response = requests.post(url, json={'rgb': average_rgb})
