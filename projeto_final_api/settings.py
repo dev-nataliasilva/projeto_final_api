@@ -7,10 +7,16 @@ import os
 from enum import Enum
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 SECRET_KEY = 'django-insecure-yv@x#6%1vaup^vcw6wsp6zcds$an8a+3a^upbo0hm3u_a*eq0r'
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = [
+    'ondesalvei-ia-f31a49c64a2d.herokuapp.com',  # Front  
+    #'localhost',  # Para desenvolvimento local
+    #'127.0.0.1',  # Para desenvolvimento local
+]
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -21,8 +27,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',    
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
