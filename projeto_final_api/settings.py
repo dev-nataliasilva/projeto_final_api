@@ -13,7 +13,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = 'django-insecure-yv@x#6%1vaup^vcw6wsp6zcds$an8a+3a^upbo0hm3u_a*eq0r'
 DEBUG = False
 ALLOWED_HOSTS = [
-    'ondesalvei-api-3e0bb38ffd71.herokuapp.com'  # API (própria aplicação) 
+    'ondesalvei-api-3e0bb38ffd71.herokuapp.com',  # API (própria aplicação) 
     'ondesalvei-afacdb17af64.herokuapp.com',  # Front     
     #'localhost',  # Para desenvolvimento local
     #'127.0.0.1',  # Para desenvolvimento local
