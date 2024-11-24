@@ -18,12 +18,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Diretório onde os arquiv
 SECRET_KEY = 'django-insecure-yv@x#6%1vaup^vcw6wsp6zcds$an8a+3a^upbo0hm3u_a*eq0r'
 
 # Modo de depuração do Django
-DEBUG = False  # Quando em produção, o DEBUG deve ser False
+DEBUG = True  # Quando em produção, o DEBUG deve ser False
 
 # Lista de hosts permitidos para a aplicação (domínios onde a aplicação pode ser acessada)
 ALLOWED_HOSTS = [
-    'ondesalvei-api-3e0bb38ffd71.herokuapp.com',  # API (própria aplicação) 
-    'ondesalvei-afacdb17af64.herokuapp.com',  # Front-end
     #'localhost',  # Para desenvolvimento local
     #'127.0.0.1',  # Para desenvolvimento local
 ]
