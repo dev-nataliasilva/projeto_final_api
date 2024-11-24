@@ -23,7 +23,8 @@ DEBUG = False  # Quando em produção, o DEBUG deve ser False
 # Lista de hosts permitidos para a aplicação (domínios onde a aplicação pode ser acessada)
 ALLOWED_HOSTS = [
     'ondesalvei-api-3e0bb38ffd71.herokuapp.com',  # API (própria aplicação) 
-    'ondesalvei-afacdb17af64.herokuapp.com',  # Front-end
+    'https://ondesalvei-afacdb17af64.herokuapp.com/',  # Host do frontend no Heroku
+    'https://ondesalvei-ia-f31a49c64a2d.herokuapp.com/',  # Host da IA no Heroku
     #'localhost',  # Para desenvolvimento local
     #'127.0.0.1',  # Para desenvolvimento local
 ]
